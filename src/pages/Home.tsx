@@ -47,7 +47,10 @@ const Home = () => {
     }
     setDisable(true);
 
-    if (firstChoice.name === secondChoice.name) {
+    if (
+      firstChoice.name === secondChoice.name &&
+      firstChoice !== secondChoice
+    ) {
       setCards((prevcard) =>
         prevcard.map((item) =>
           item.name === firstChoice.name ? { ...item, matched: true } : item
@@ -63,10 +66,6 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center gap-6">
-        <h1>Memory Game</h1>
-        <Button onClick={shuffleCards}>Shuffle Cards</Button>
-      </div>
       <div className="flex items-center flex-col mt-10">
         <div className="grid grid-cols-5 gap-4">
           {cards.map((card: CardsProps, index: number) => (
@@ -81,6 +80,9 @@ const Home = () => {
             />
           ))}
         </div>
+      </div>
+      <div className="flex flex-col items-center gap-6 mt-10">
+        <Button onClick={shuffleCards}>Shuffle Cards</Button>
       </div>
     </>
   );

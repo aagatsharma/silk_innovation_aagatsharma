@@ -31,7 +31,9 @@ export function Login() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const [firstField, setFirstField] = useState<"email" | "mobile_no">("email");
-  const [secondField, setSecondField] = useState<"pin" | "password">("pin");
+  const [secondField, setSecondField] = useState<"pin" | "password">(
+    "password"
+  );
 
   const { setToken } = UseUser();
 
@@ -57,15 +59,16 @@ export function Login() {
         if (value.length === 4) {
           setSecondField("pin");
           return true;
-        } else if (value.length > 7) {
+        } else if (value.length >= 6) {
           setSecondField("password");
           return true;
         } else {
-          return false;
+          setSecondField("password");
+          return true;
         }
       },
       {
-        message: "Please enter 4 digit pin or password greater than 8 digit",
+        message: "Please enter 4 digit pin or password greater than 6 digit",
       }
     ),
   });
