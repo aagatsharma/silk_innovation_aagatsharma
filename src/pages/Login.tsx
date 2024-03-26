@@ -47,6 +47,7 @@ export function Login() {
           setFirstField("mobile_no");
           return true;
         } else {
+          setFirstField("email");
           return false;
         }
       },
@@ -64,7 +65,7 @@ export function Login() {
           return true;
         } else {
           setSecondField("password");
-          return true;
+          return false;
         }
       },
       {
